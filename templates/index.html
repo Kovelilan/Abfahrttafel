@@ -1,23 +1,34 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
-
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Abfahrten</title>
-
-    <!-- Stylesheet lädt die lokale Font via @font-face -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Abfahrttafel</title>
     <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/script.js" defer></script>
 </head>
-
 <body>
-    <div class="panel" id="panel">
-        <div id="departures" class="departures">
-            <div class="loading">Lade...</div>
-        </div>
-    </div>
+    <p id="board-description" class="sr-only">
+        LED-Matrix-Abfahrtstafel mit vier sichtbaren Abfahrten im kompakten Raster.
+    </p>
 
-    <script src="/static/script.js"></script>
+    <main class="matrix-board" aria-describedby="board-description">
+        <section class="board-shell" aria-labelledby="board-title">
+            <h1 id="board-title" class="sr-only">Abfahrten</h1>
+            <div
+                id="departures"
+                class="departure-list"
+                role="list"
+                aria-live="polite"
+                aria-atomic="false"
+                aria-busy="true"
+                aria-label="Naechste vier Abfahrten"
+            ></div>
+        </section>
+    </main>
+
+    <noscript>
+        <div class="noscript-hint">JavaScript wird fuer die Abfahrtsanzeige benoetigt.</div>
+    </noscript>
 </body>
-
 </html>
